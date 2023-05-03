@@ -1,0 +1,46 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/info-product.css">
+</head>
+
+<body>
+  <%- include('../includes/loader.ejs') %>
+
+  <div class="tm-main">
+    <%- include('../includes/welcome_section.ejs') %>
+
+    <div class="container">
+      <%- include('../includes/search_form.ejs') %>
+
+      <div class="row tm-albums-container grid info-product">
+        <div class="col-sm-6 col-12 col-md-6 col-lg-3 col-xl-3 tm-album-col">
+          <div class="row">
+            <div class="col-12 p-0 m-0">
+              <img src="<%= product.imageUrl %>" alt="Image" class="img-fluid" />
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-12 col-md-6 col-lg-6 col-xl-6 tm-album-col">
+          <div class="row">
+            <h2 class="col-12 p-2 m-0"><%= product.title %></h2>
+            <span class="col-12 p-4"><%= product.description %></span>
+          </div>
+        </div>
+        <div class="col-sm-6 col-12 col-md-6 col-lg-3 col-xl-3 tm-album-col ">
+          <div class="row">
+            <h2 class="col-12 p-2 m-0 text-center">Price</h2>
+            <div span class="col-12 p-2 m-0 row align-items-center justify-content-center">$<%= product.price %></div>
+            <form span class="col-12 p-2 m-0 row align-items-center justify-content-center">
+              <button type="submit" formmethod="post" formaction="/shop/add-cart/<%= product.id %>" class="col-auto btn btn-lg btn-primary">Add to cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <%- include('../includes/footer.ejs') %>
+    </div>
+  </div>
+
+  <%- include('../includes/js_default.ejs') %>
+  <!-- search form JS -->
+  <script src="/js/search_form.js"></script>
+  <%- include('../includes/end.ejs') %>

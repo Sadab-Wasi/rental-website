@@ -1,0 +1,79 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+  <%- include('../includes/loader.ejs') %>
+
+  <div class="tm-main">
+    <%- include('../includes/welcome_section.ejs') %>
+
+    <div class="container">
+      <%- include('../includes/search_form.ejs') %>
+
+      <div class="row justify-content-around tm-albums-container grid" id="all_products" >
+        <% if (products.length > 0) { %>
+        <% for( let product of products ) { %>
+        <form class="col-sm-6 col-12 col-md-6 col-lg-3 col-xl-3 tm-album-col card_product">
+          <div class="row">
+            <div class="col-12 p-0 m-0">
+              <img src="<%= product.imageUrl %>" alt="Image" class="img-fluid" />
+            </div>
+            <div class="col-12 "><%= product.title %></div>
+            <div class="col-12 "><%= product.description %></div>
+            <div class="col-12 text-right mt-1 mb-2">$<%= product.price %></div>
+            <div class="col-12 row p-0 m-0 px-1 justify-content-around">
+              <button type="submit" class="col-auto btn btn-xs btn-info" formmethod="get" formaction="/shop/product-info/<%= product.id %>">More details</button>
+              <button type="submit" class="col-auto btn btn-xs btn-primary" formmethod="post" formaction="/shop/add-cart/<%= product.id %>">Add to Cart</button>
+            </div>
+          </div>
+        </form>
+        <% } %>
+        <% } else { %>
+        <div class="col-sm-6 col-12 col-md-6 col-lg-3 col-xl-3 tm-album-col btn_new_product">
+          <div class="row p-3">
+            <div class="col-12 row justify-content-around align-items-center p-0 m-0">
+              <i class="fas fa-5x fa-exclamation-triangle"></i>
+            </div>
+            <div class="col-12 row justify-content-around align-items-center p-0 m-0">
+              No products currently available
+            </div>
+          </div>
+        </div>
+        <% } %>
+        <!-- <div class="col-sm-6 col-12 col-md-6 col-lg-3 col-xl-3 tm-album-col">
+          <div class="row border" style="margin-bottom: 1.2rem; width: 100%;">
+            <div class="col-12 p-0 m-0" style="text-align: center; height: 60%;">
+              <img src="img/book-1.jpg" alt="Image" class="img-fluid" style="height: 100%;" />
+            </div>
+            <div class="col-12 " style="height: 09%; font-size: 25px; font-weight: 500; text-align: center; color: black">Title</div>
+            <div class="col-12 " style="height: 24%; ">Description</div>
+            <div class="col-12 row p-0 m-0 px-1 justify-content-around" style="height: 07%; ">
+              <button type="button" class="col-auto btn btn-xs btn-info" onclick="window.location.assign('/shop/product-info/a')">More details</button>
+              <button type="button" class="col-auto btn btn-xs btn-primary">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-12 col-md-6 col-lg-3 col-xl-3 tm-album-col">
+          <div class="row border" style="margin-bottom: 1.2rem; width: 100%;">
+            <div class="col-12 p-0 m-0" style="text-align: center; height: 60%;">
+              <img src="img/book-1.jpg" alt="Image" class="img-fluid" style="height: 100%;" />
+            </div>
+            <div class="col-12 " style="height: 09%; font-size: 25px; font-weight: 500; text-align: center; color: black">Title</div>
+            <div class="col-12 " style="height: 24%; ">Description</div>
+            <div class="col-12 row p-0 m-0 px-1 justify-content-around" style="height: 07%; ">
+              <button type="button" class="col-auto btn btn-xs btn-info" onclick="window.location.assign('/shop/product-info/a')">More details</button>
+              <button type="button" class="col-auto btn btn-xs btn-primary">Add to Cart</button>
+            </div>
+          </div>
+        </div> -->
+      </div>
+
+      <%- include('../includes/footer.ejs') %>
+    </div>
+  </div>
+
+  <%- include('../includes/js_default.ejs') %>
+  <!-- search form JS -->
+  <script src="/js/search_form.js"></script>
+  <%- include('../includes/end.ejs') %>

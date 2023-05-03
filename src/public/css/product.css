@@ -1,0 +1,62 @@
+/* card */
+.card_product > div {
+  border: 1px solid #d5d9fa;
+  border-radius: 5px;
+  margin-bottom: 1.2rem;
+  width: 100%;
+  padding: 0.8rem;
+  transition: box-shadow 0.3s ease-in-out;
+}
+.card_product > div:hover {
+  box-shadow: 0px 0px 5px 1px #808080;
+}
+
+/* image */
+.card_product > div > div:nth-child(1) {
+  text-align: center;
+  height: 60%;
+}
+.card_product > div > div:nth-child(1) img {
+  height: 100%;
+}
+
+/* title */
+.card_product > div > div:nth-child(2) {
+  /* height: 10%; */
+  font-size: 25px;
+  font-weight: 500;
+  text-align: center;
+  color: black;
+}
+
+.card_product > div {
+  height: 25rem;
+  overflow: hidden; /* Required to make sure multiline-ellipsis is working */
+}
+/* multiline-ellipsis */
+.card_product > div > div:nth-child(3) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* start showing ellipsis when 3rd line is reached */
+  white-space: pre-wrap; /* let the text wrap preserving spaces */
+}
+
+/* button config */
+.card_product > div > div:nth-child(4) {
+  height: 07%;
+}
+
+/* new product button */
+.btn_new_product > div {
+  margin-bottom: 1.2rem;
+  width: 100%;
+}
+.btn_new_product > div > div:nth-child(1) {
+  height: 60%;
+}
+.btn_new_product > div > div:nth-child(2) {
+  min-height: 50%;
+  font-size: x-large;
+  font-weight: bolder;
+}

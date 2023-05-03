@@ -1,0 +1,48 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+  <%- include('../includes/loader.ejs') %>
+
+  <div class="tm-main">
+    <%- include('../includes/welcome_section.ejs') %>
+
+    <div class="container">
+
+      <div class="row justify-content-around tm-albums-container grid">
+        <div class="col-sm-6 col-12 col-md-6 col-lg-3 col-xl-3 tm-album-col btn_new_product">
+          <div class="row custom-button p-3" onclick="window.location.assign('/admin/create-product')">
+            <div class="col-12 row justify-content-around align-items-center p-0 m-0">
+              <i class="fas fa-5x fa-plus-square"></i>
+            </div>
+            <div class="col-12 row justify-content-around align-items-center p-0 m-0">
+              Add new product
+            </div>
+          </div>
+        </div>
+        <% if (products.length > 0) { %>
+          <% for( let product of products ) { %>
+          <form class="col-sm-6 col-12 col-md-6 col-lg-3 col-xl-3 tm-album-col card_product">
+            <div class="row">
+              <div class="col-12 p-0 m-0">
+                <img src="<%= product.imageUrl %>" alt="Image" class="img-fluid" />
+              </div>
+              <div class="col-12 "><%= product.title %></div>
+              <div class="col-12 "><%= product.description %></div>
+              <div class="col-12 row p-0 m-0 px-1 justify-content-around">
+                <button type="submit" class="col-auto btn btn-xs btn-primary" formmethod="get" formaction="/admin/update-product/<%= product.id %>">Update</button>
+                <button type="submit" class="col-auto btn btn-xs btn-danger" formmethod="post" formaction="/admin/delete-product/<%= product.id %>">Delete</button>
+              </div>
+            </div>
+          </form>
+          <% } %>
+        <% } %>
+      </div>
+
+      <%- include('../includes/footer.ejs') %>
+    </div>
+  </div>
+
+  <%- include('../includes/js_default.ejs') %>
+  <%- include('../includes/end.ejs') %>

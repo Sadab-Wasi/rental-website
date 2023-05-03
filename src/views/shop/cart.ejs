@@ -1,0 +1,70 @@
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body>
+  <%- include('../includes/loader.ejs') %>
+
+  <div class="tm-main">
+    <%- include('../includes/welcome_section.ejs') %>
+
+    <div class="container">
+
+      <div class="row tm-albums-container grid">
+        <div class="col-12 row align-items-center">
+          <h2 class="col p-0 m-0">Cart</h2>
+          <a href="/order" class="col-auto a2"><i class="fas fa-1x fa-list-alt"></i> History</a>
+          <hr class="col-12 p-0 m-0" />
+          <br />
+          <% if (products.length != 0) { %>
+          <% for( let product of products ) { %>
+          <div class="col-12">
+            <div class="media">
+              <img src="<%= product.imageUrl %>" alt="Image" class="mr-3" style="height: 140px; width: 140px;" />
+              <div class="media-body tm-bg-gray">
+                <div class="tm-description-box row">
+                  <div class="col-10">
+                    <h5 class="tm-text-blue"><%= product.title %></h5>
+                    <p class="mb-0"><%= product.description %></p>
+                  </div>
+                  <div class="col-2 row align-items-center justify-content-end" style="font-weight: bold;">
+                    <%= product['cart_product.quantity'] %> pieces
+                  </div>
+                </div>
+                <form class="tm-buy-box">
+                  <span class="tm-text-blue tm-price-tag">$<%= product.price %></span>
+                  <button formmethod="post" formaction="/shop/delete-cart/<%= product.id %>" class="tm-bg-red tm-text-white tm-buy btn btn-danger">delete</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <% } %>
+          <% } else { %>
+          <div class="col-12">
+            <div class="col-12 row justify-content-around align-items-center p-0 m-0">
+              <i class="fas fa-5x fa-shopping-cart"></i>
+            </div>
+            <div class="col-12 row justify-content-around align-items-center p-0 m-0">
+              Cart is empty
+            </div>
+          </div>
+          <% } %>
+          <hr class="col-12 p-0 m-0" />
+          <div class="w-100"></div>
+          <h5 class="col p-0 m-0" style="font-weight: normal;">VAT</h5>
+          <span class="col-2 text-center" style="font-weight: normal; font-size: 1.2rem;">$ 0.00</span>
+          <div class="w-100"></div>
+          <h5 class="col p-0 m-0" style="font-weight: bold;">Total price</h5>
+          <span class="col-2 text-center" style="font-weight: bold; font-size: 1.2rem;">$ <%= total_cost %></span>
+          <div class="w-100"></div>
+          <form method="post" action="/order/save" class="col-auto ml-auto mt-2">
+            <button type="submit" class="btn btn-lg btn-primary py-0 <% if (products.length == 0) { %>disabled<% } %>">Purchase</button>
+          </form>
+        </div>
+      </div>
+
+      <%- include('../includes/footer.ejs') %>
+    </div>
+  </div>
+
+  <%- include('../includes/js_default.ejs') %>
+  <%- include('../includes/end.ejs') %>

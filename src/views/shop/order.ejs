@@ -1,0 +1,118 @@
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body>
+  <%- include('../includes/loader.ejs') %>
+
+  <div class="tm-main">
+    <%- include('../includes/welcome_section.ejs') %>
+
+    <div class="container">
+
+      <div class="row tm-albums-container grid">
+        <div class="col-12 row align-items-center">
+          <h2 class="col p-0 m-0">Order history</h2>
+          <!-- <a href="/order" class="col-auto a2"><i class="fas fa-1x fa-list-alt"></i> History</a> -->
+          <hr class="col-12 p-0 m-0" />
+          <br />
+          <div class="col-12">
+            <% if (orders_dates.length > 0) { %>
+            <% for( let i = 0; i < orders_dates.length; i++ ) { %>
+            <div class="media">
+              <div class="media-body tm-bg-gray row">
+                <h5 class="col-2 row ml-2 align-items-center justify-content-center tm-text-blue"><%= orders_dates[i].dataValues.created_at.toLocaleString('default',  {dateStyle: 'long', timeStyle: 'short'}) %></h5>
+                <div class="col-1">&nbsp;</div>
+                <div class="tm-description-box col row p-3 m-0">
+                  <% if (orders_products[i].length > 0) { %>
+                  <ul class="col side-by-side p-0 m-0">
+                    <% for( let j = 0; j < orders_products[i].length; j++ ) { %>
+                    <li><%= orders_products[i][j].title %></li>
+                    <% } %>
+                  </ul>
+                  <% } else { %>
+                  <div class="col side-by-side p-0 m-0">
+                    <div class="col-12 row justify-content-around align-items-center p-0 m-0">
+                      <i class="fas fa-5x fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="col-12 row justify-content-around align-items-center p-0 m-0">
+                      No products in cart
+                    </div>
+                  </div>
+                  <% } %>
+                  <div class="col-3">
+                    <div span class="col-12 p-2 m-0 row align-items-center justify-content-center" style="min-height: 50%; font-size: xx-large; font-weight: bolder;">$<%= total_costs[i] %></div>
+                    <div span class="col-12 p-2 m-0 row align-items-center justify-content-center" style="font-size: large; font-weight: bolder;">Total price</div>
+                  </div>
+                </div>
+                <div class="col-auto tm-buy-box">
+                  <span class="tm-text-blue tm-price-tag">Completed</span>
+                </div>
+              </div>
+            </div>
+            <% } %>
+            <% } else { %>
+            <div class="media">
+              <div class="media-body tm-bg-gray row">
+                <div class="col-12 row justify-content-around align-items-center p-0 m-0">
+                  <i class="fas fa-5x fa-shopping-cart"></i>
+                </div>
+                <div class="col-12 row justify-content-around align-items-center p-0 m-0">
+                  Order hisotry is empty
+                </div>
+              </div>
+            </div>
+            <% } %>
+            <!-- <div class="media">
+              <div class="media-body tm-bg-gray row">
+                <h5 class="col-2 row ml-2 align-items-center justify-content-center tm-text-blue">26 March 2023</h5>
+                <div class="col-1">&nbsp;</div>
+                <div class="tm-description-box col row p-3 m-0">
+                  <ul class="col side-by-side p-0 m-0">
+                    <li>item 1</li>
+                    <li>item 2</li>
+                    <li>item 3</li>
+                    <li>item 4</li>
+                  </ul>
+                  <div class="col-3">
+                    <div span class="col-12 p-2 m-0 row align-items-center justify-content-center" style="min-height: 50%; font-size: xx-large; font-weight: bolder;">$5.50</div>
+                    <div span class="col-12 p-2 m-0 row align-items-center justify-content-center" style="font-size: large; font-weight: bolder;">Total price</div>
+                  </div>
+                </div>
+                <div class="col-auto tm-buy-box">
+                  <span class="tm-text-blue tm-price-tag">Completed</span>
+                </div>
+              </div>
+            </div>
+            <div class="media">
+              <div class="media-body tm-bg-gray row">
+                <h5 class="col-2 row ml-2 align-items-center justify-content-center tm-text-blue">25 March 2023</h5>
+                <div class="col-1">&nbsp;</div>
+                <div class="tm-description-box col row p-3 m-0">
+                  <ul class="col side-by-side p-0 m-0">
+                    <li>item 1</li>
+                    <li>item 2</li>
+                    <li>item 3</li>
+                    <li>item 4</li>
+                  </ul>
+                  <div class="col-3">
+                    <div span class="col-12 p-2 m-0 row align-items-center justify-content-center" style="min-height: 50%; font-size: xx-large; font-weight: bolder;">$5.50</div>
+                    <div span class="col-12 p-2 m-0 row align-items-center justify-content-center" style="font-size: large; font-weight: bolder;">Total price</div>
+                  </div>
+                </div>
+                <div class="col-auto tm-buy-box">
+                  <span class="tm-text-blue tm-price-tag">Completed</span>
+                </div>
+              </div>
+            </div> -->
+          </div>
+          <!-- <hr class="col-12 p-0 m-0" /> -->
+          <div class="w-100"></div>
+        </div>
+      </div>
+
+      <%- include('../includes/footer.ejs') %>
+    </div>
+  </div>
+
+  <%- include('../includes/js_default.ejs') %>
+  <%- include('../includes/end.ejs') %>

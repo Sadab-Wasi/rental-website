@@ -1,0 +1,16 @@
+.latest-product > img {
+  height: 140px;
+  width: 140px;
+}
+
+.latest-product .tm-description-box {
+  overflow: hidden; /* Required to make sure multiline-ellipsis is working */
+}
+
+.latest-product .tm-description-box > p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* start showing ellipsis when 3rd line is reached */
+  white-space: pre-wrap; /* let the text wrap preserving spaces */
+}

@@ -1,0 +1,13 @@
+<div class="tm-search-form-container" <% if (pageTitle != 'Home') {%>style="margin-top: 1.5rem;"<% } %>>
+    <form action="javascript:void(0);" class="form-inline tm-search-form">
+        <a href="/" class="text-uppercase tm-new-release tm-text-white <% if (pageTitle === 'Home') {%>tm-search-active<% } %>">New Release</a>
+        <div class="form-group tm-search-box <% if (pageTitle === 'Shop') {%>tm-search-active<% } %>">
+            <input type="text" id="input_search" class="form-control tm-search-input" placeholder="Type your keyword ..." />
+            <input type="button" onclick="search_keyword()" value="Search" class="form-control tm-search-submit" />
+        </div>
+        <a href="/shop" class="text-uppercase tm-all-release tm-text-white <% if (pageTitle === 'Shop') {%>tm-search-active<% } %>">All Products</a>
+        <!-- <div class="border border-danger form-group tm-advanced-box <% if (pageTitle === 'Shop') {%>tm-search-active<% } %>">
+            <a href="/shop" class="tm-text-white">All Products</a>
+        </div> -->
+    </form>
+</div>

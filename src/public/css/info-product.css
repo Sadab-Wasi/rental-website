@@ -1,0 +1,44 @@
+.info-product {
+  height: 15rem;
+}
+
+/* inner divs */
+.info-product > div {
+  height: 100%;
+}
+.info-product > div > div {
+  margin-bottom: 1.2rem;
+  width: 100%;
+}
+
+/* inner title */
+.info-product > div > div > h2 {
+  height: 15%;
+}
+
+/* inner img */
+.info-product > div:nth-child(1) > div > div {
+  text-align: center;
+  height: 100%;
+}
+.info-product > div:nth-child(1) > div > div > img {
+  height: 100%;
+}
+
+/* inner description */
+.info-product > div:nth-child(2) > div > span {
+  height: 85%;
+  white-space: pre-line;
+}
+
+/* inner price */
+.info-product > div:nth-child(3) > div > div:nth-child(1) {
+  min-height: 50%;
+  font-size: xx-large;
+  font-weight: bolder;
+}
+
+/* inner button */
+.info-product > div:nth-child(3) > div > div:nth-child(2) {
+  min-height: 35%;
+}

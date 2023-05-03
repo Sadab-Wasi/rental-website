@@ -1,0 +1,26 @@
+[
+  {
+    "title": "The Vintage Book",
+    "price": 9.99,
+    "imageUrl": "https://img.freepik.com/free-psd/vintage-book-mock-up_1310-1159.jpg?w=740&t=st=1681310648~exp=1681311248~hmac=5751209c81118dac7264e7973fdc8aa7b3166a87b93ba4a24e5ee436da50d53e",
+    "description": "A curated collection of classic literature, perfect for book lovers who appreciate the beauty of vintage books. Featuring a range of genres and authors, this elegant book is a must-have for anyone who loves the timeless appeal of classic literature."
+  },
+  {
+    "title": "The Bike Guy",
+    "price": 2.99,
+    "imageUrl": "https://img.freepik.com/free-vector/bike-guy-wattpad-book-cover_23-2149452163.jpg?w=740&t=st=1681310705~exp=1681311305~hmac=02c41fa309d16fe2169b69deb12ef676c2005a74498fa726a9b688d8b996e7d6",
+    "description": "A go-to resource for cycling enthusiasts who want to stay up-to-date with the latest trends and technologies in the cycling world. With a wealth of knowledge and experience, 'The Bike Guy' offers expert advice on everything from bike maintenance and repair to the best cycling routes and gear. Whether you're a seasoned cyclist or just starting out, 'The Bike Guy' is the ultimate guide to all things cycling."
+  },
+  {
+    "title": "Nature",
+    "price": 5.99,
+    "imageUrl": "https://img.freepik.com/premium-psd/womans-hand-holding-nature-magazine-mock-up_23-2148311942.jpg?w=740",
+    "description": "A beautiful and inspiring force that surrounds us. From majestic mountains to serene oceans, it offers endless opportunities for exploration and adventure. It reminds us of our interconnectedness with the world and the importance of preserving this precious resource."
+  },
+  {
+    "title": "Win-Win strategy",
+    "price": 14.99,
+    "imageUrl": "https://img.freepik.com/free-vector/professional-business-book-cover_23-2149490317.jpg?w=740&t=st=1681311455~exp=1681312055~hmac=972122978250935de7a0526f43d472ed51691ab1a60297500c888f5c58983e1d",
+    "description": "An approach to problem-solving that seeks to benefit all parties involved, not just one. It involves finding a solution that meets the needs and interests of everyone involved through effective communication and collaboration. This can lead to outcomes that create lasting value and build trust between parties."
+  }
+]
