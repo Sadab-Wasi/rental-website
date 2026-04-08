@@ -3,6 +3,14 @@
 This application allows a user to view the rental shop. Browse items throughout the shop. Order items by adding to cart. And can also view the order history of all putchases.  
 <br /><br />
 
+---
+
+### Screenshot
+
+| Mobile View                             | Desktop View                              |
+| :-------------------------------------- | :---------------------------------------- |
+| ![Mobile preview](./preview/mobile.png) | ![Desktop preview](./preview/desktop.png) |
+
 ## Application Tools
 
 ---
@@ -35,7 +43,6 @@ This application allows a user to view the rental shop. Browse items throughout 
     - NodeJS version 18.15.0 was used
     - PostgresSql version 12.0 was used
 2.  Enter "/src" folder, create a file named ".env" and enter the following information:
-
     - ```shell
         # Web client
         HOST = 'localhost'
