@@ -45,6 +45,37 @@ app.use(
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
+// 1. Export IMMEDIATELY so Vercel can find the 'app'
+module.exports = app;
+
+// 2. Use middleware to ensure DB is ready before any route runs
+let isReady = false;
+
+app.use(async (req, res, next) => {
+  if (isReady) return next();
+
+  try {
+    const reset_db = process.env.DB_RESET?.toLowerCase() === "true";
+
+    // Only run this ONCE per function lifecycle
+    await sequelize.authenticate(); // Check connection first
+
+    if (reset_db) {
+      await sequelize.sync({ force: true });
+      await Product.bulkCreate(init_products);
+      console.log("Database reset and seeded!");
+    } else {
+      await sequelize.sync();
+    }
+
+    isReady = true;
+    next();
+  } catch (err) {
+    console.error("Database connection failed:", err);
+    res.status(500).send("Database Initialization Error");
+  }
+});
+
 // // Connect to user ID 1
 // app.use(async (req, res, next) => {
 //   let user_data;
@@ -81,24 +112,3 @@ Product.belongsToMany(Cart, { through: CartProduct });
 Cart.belongsToMany(Product, { through: CartProduct });
 Order.belongsToMany(Product, { through: OrderProduct });
 Product.belongsToMany(Order, { through: OrderProduct });
-
-// 1. Move logic to an async function
-const initDb = async () => {
-  const reset_db = process.env.DB_RESET?.toLowerCase() === "true";
-
-  try {
-    await sequelize.sync({ force: reset_db });
-    if (reset_db) {
-      await Product.bulkCreate(init_products, { validate: true });
-      console.log("DB Reset and Seeded");
-    }
-  } catch (err) {
-    console.error("DB Sync Error:", err);
-  }
-};
-
-// 2. Trigger the sync (it runs in the background)
-initDb();
-
-// 3. Export IMMEDIATELY at the top level
-module.exports = app;
