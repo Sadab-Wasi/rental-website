@@ -40,7 +40,7 @@ app.use(
         return res;
       }
     },
-  })
+  }),
 );
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
@@ -82,21 +82,23 @@ Cart.belongsToMany(Product, { through: CartProduct });
 Order.belongsToMany(Product, { through: OrderProduct });
 Product.belongsToMany(Order, { through: OrderProduct });
 
-const reset_db = process.env.DB_RESET.toLowerCase() == "true";
-sequelize
-  .sync({ force: reset_db })
-  .then(async () => {
-    // Insert DB data only when db reset
+// 1. Move logic to an async function
+const initDb = async () => {
+  const reset_db = process.env.DB_RESET?.toLowerCase() === "true";
+
+  try {
+    await sequelize.sync({ force: reset_db });
     if (reset_db) {
       await Product.bulkCreate(init_products, { validate: true });
-      // await User.bulkCreate(init_users, { validate: true });
-
-      return;
+      console.log("DB Reset and Seeded");
     }
-  })
-  .then(() => {
-    app.listen(Port, () => {
-      return console.log(`listening on *: http://${Host}:${Port}`);
-    });
-  })
-  .catch((err) => console.log(err));
+  } catch (err) {
+    console.error("DB Sync Error:", err);
+  }
+};
+
+// 2. Trigger the sync (it runs in the background)
+initDb();
+
+// 3. Export IMMEDIATELY at the top level
+module.exports = app;
