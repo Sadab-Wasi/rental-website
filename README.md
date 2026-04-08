@@ -11,6 +11,12 @@ This application allows a user to view the rental shop. Browse items throughout 
 | :-------------------------------------- | :---------------------------------------- |
 | ![Mobile preview](./preview/mobile.png) | ![Desktop preview](./preview/desktop.png) |
 
+### Links
+
+  - [Live Site URL](https://rental-website-dy4b.onrender.com/)
+
+-----
+
 ## Application Tools
 
 ---
